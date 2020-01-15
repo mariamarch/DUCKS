@@ -1,0 +1,9 @@
+base_x=4
+x=2
+base_y=4
+y=2
+sum = ((self.base_x - x)**2 + (self.base_y - y)**2)
+vz = math.sqrt(sum)
+sin = self.base_x / vz
+angle = math.asin(sin)
+dlina=3,14159*r*angle/180
