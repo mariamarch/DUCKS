@@ -25,47 +25,47 @@ class Road:
                 x_s, y_s, sign = curr_segm.cord_next(sign)
             if segmentum[:-1] == 'turnrd':
                 if segmentum[-1] == 'm':
-                    r1 = 0
-                    r2 = 1.5
+                    r1 = 0 * utk_bot
+                    r2 = 1.5 * utk_bot
                 elif segmentum[-1] == 'b':
-                    r1 = 1.5
-                    r2 = 3
+                    r1 = 1.5 * utk_bot
+                    r2 = 3 * utk_bot
                 curr_segm = circle_road_right_down((x_s, y_s, r1, r2))
                 self.segments.append(curr_segm)
                 x_s, y_s, sign = curr_segm.cord_next(sign)
             if segmentum[:-1] == 'turnru':
                 if segmentum[-1] == 'm':
-                    r1 = 0
-                    r2 = 1.5
+                    r1 = 0 * utk_bot
+                    r2 = 1.5 * utk_bot
                 else:
-                    r1 = 1.5
-                    r2 = 3
+                    r1 = 1.5 * utk_bot
+                    r2 = 3 * utk_bot
                 curr_segm = circle_road_right_upper((x_s, y_s, r1, r2))
                 self.segments.append(curr_segm)
                 x_s, y_s, sign = curr_segm.cord_next(sign)
             if segmentum[:-1] == 'turnld':
                 if segmentum[-1] == 'm':
-                    r1 = 0
-                    r2 = 1.5
+                    r1 = 0 * utk_bot
+                    r2 = 1.5 * utk_bot
                 else:
-                    r1 = 1.5
-                    r2 = 3
+                    r1 = 1.5 * utk_bot
+                    r2 = 3 * utk_bot
                 curr_segm = circle_road_left_down((x_s, y_s, r1, r2))
                 self.segments.append(curr_segm)
                 x_s, y_s, sign = curr_segm.cord_next(sign)
             if segmentum[:-1] == 'turnlu':
                 if segmentum[-1] == 'm':
-                    r1 = 0
-                    r2 = 1.5
+                    r1 = 0 * utk_bot
+                    r2 = 1.5 * utk_bot
                 else:
-                    r1 = 1.5
-                    r2 = 3
+                    r1 = 1.5 * utk_bot
+                    r2 = 3 * utk_bot
                 curr_segm = circle_road_left_upper((x_s, y_s, r1, r2))
                 self.segments.append(curr_segm)
                 x_s, y_s, sign = curr_segm.cord_next(sign)
     def is_on_road(self,x,y):
         is_on_road_v = False
-        for segmentum in self.sequence:
+        for segmentum in self.segments:
             if segmentum.is_in_phragment(x,y):
                 is_on_road_v = True
         return is_on_road_v
@@ -184,9 +184,11 @@ class circle_road_left_down:
         self.base_x, self.base_y, self.r1, self.r2 = cord_b
         self.len = math.pi / 2 * (self.r1 + self.r2) / 2
     def is_in_phragment(self,x,y):
-        ro = ((self.base_x - x) ** 2 + (self.base_y - y) ** 2)
+        circ_x = self.base_x + self.r2
+        circ_y = self.base_y
+        ro = ((circ_x - x) ** 2 + (circ_y - y) ** 2)
         ro = math.sqrt(ro)
-        sin = (self.base_x-x) / ro
+        sin = abs(circ_x-x) / ro
         angle = math.asin(sin)
         if math.pi*3/2<=angle<=math.pi*2 and self.r1<=ro<=self.r2:
             return True
@@ -247,7 +249,14 @@ r5.Road2 = R4
 r6.Road1 = r3
 r6.Road2 = r5
 
-print(r2.segments)
+c_road = None
+Rmap = [R1,r1,R2,r2,R3,r3,R4,r4,R5,r5,R6,r6]
+for road in Rmap:
+    if road.is_on_road(2*utk_bot,0.5*utk_bot):
+        c_road = road
+
+
+print(c_road.segments)
 
 
 
