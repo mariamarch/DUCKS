@@ -135,7 +135,7 @@ class circle_road_left_down:
         self.next_x = self.base_x + self.r1
         self.next_y = self.base_y - self.r1
         return (self.next_x, self.next_y,self.sign)
-    
+
 
 segm = ['v','turnldb','h','h','h','turnrdb','v']
 R1 = Road(0*utk_bot,6*utk_bot,segm,'+')
@@ -146,17 +146,17 @@ R2 = Road(9*utk_bot,15*utk_bot,segm,'-')
 segm = ['v','turnrum','h']
 r2 = Road(9*utk_bot,13,5*utk_bot,segm,'-')
 segm = ['h']
-R3 = Road(9*utk_bot,9*utk_bot,segm,'-')
+R3 = Road(9*utk_bot,9*utk_bot,segm,'+')
 r3 = Road(9*utk_bot,7,5*utk_bot,segm,'+')
 segm = ['v','turnlub','h']
-R4 = Road(0*utk_bot,9*utk_bot,segm,'-')
+R4 = Road(0*utk_bot,9*utk_bot,segm,'+')
 segm = ['v','turnlum','h']
 r4 = Road(1,5*utk_bot,9*utk_bot,segm,'+')
 segm = ['v']
 R5 = Road(6*utk_bot,12*utk_bot,segm,'-')
-r5 = Road(7,5*utk_bot,12*utk_bot,segm,'+')
+r5 = Road(7,5*utk_bot,12*utk_bot,segm,'-')
 segm = ['h']
-R6 = Road(3*utk_bot,9*utk_bot,segm,'-')
+R6 = Road(3*utk_bot,9*utk_bot,segm,'+')
 r6 = Road(3*utk_bot,7,5*utk_bot,segm,'+')
 R1.Road1 = R2
 R1.Road2 = R3
