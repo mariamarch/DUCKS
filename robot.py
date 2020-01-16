@@ -24,9 +24,8 @@ class Vert_road:
         elif sign == '-':
             self.next_x = self.base_x
             self.next_y = self.base_y - self.wid
-        return (self.next_x, self.next_y)
-        return(self.sign)
-
+        return (self.next_x, self.next_y,self.sign)
+    
 class Horizontal_road:
     def _init_(self,cord_b):
         self.base_x, self.base_y = cord_b
@@ -47,8 +46,7 @@ class Horizontal_road:
         elif sign == '-':
             self.next_x = self.base_x-self.wid
             self.next_y = self.base_y
-        return (self.next_x, self.next_y)
-        return(self.sign)
+        return (self.next_x, self.next_y,self.sign)
 
 class circle_road_right_down:
     def _init_(self,cord_b):
