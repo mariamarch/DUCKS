@@ -63,6 +63,12 @@ class Road:
                 curr_segm = circle_road_left_upper((x_s, y_s, r1, r2))
                 self.segments.append(curr_segm)
                 x_s, y_s, sign = curr_segm.cord_next(sign)
+    def is_on_road(self,x,y):
+        is_on_road_v = False
+        for segmentum in self.sequence:
+            if segmentum.is_in_phragment(x,y):
+                is_on_road_v = True
+        return is_on_road_v
 
 class Vert_road:
     def __init__(self,cord_b):
